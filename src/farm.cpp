@@ -1,24 +1,60 @@
 #include <string>
+#include <vector>
 
-#include "ansi_clear.hpp"
+#include "farm.hpp"
+#include "soil.hpp"
 
-std::string hello() {
-   return "Hello World!";
-}
-
-void spaces_and_dot(int number_of_spaces, std::string symbol) {
-  ansi_clear();
-  std::string input;
-  for(int i = 0; i < number_of_spaces; i++) {
-    std::cout << " ";
-  }
-  std::cout << symbol << std::endl;
-  std::cout << "Press Enter" << std::endl;
-  std::getline(std::cin, input);
-}
-
-void zoom(std::string symbol) {
-  for(int i = 40; i > 0; i--) {
-    spaces_and_dot(i, symbol);
+Farm::Farm(int rows, int columns, Player *player) : rows(rows), columns(columns), player(player) {
+  for(int i = 0; i < rows; i++) {
+    std::vector<Plot *> row;
+    for(int j = 0; j < columns; j++) {
+      Soil *soil = new Soil();
+      row.push_back(soil);
+    }
+    plots.push_back(row);
   }
 }
+
+int Farm::number_of_rows() {
+  return rows;
+}
+
+int Farm::number_of_columns() {
+  return columns;
+}
+
+std::string Farm::get_symbol(int row, int column) {
+  if(player->row() == row && player->column() == column) {
+    return "@";
+  } else {
+    return plots.at(row).at(column)->symbol();
+  }
+}
+
+void Farm::plant(int row, int column, Plot *plot) {
+  Plot *current_plot = plots.at(row).at(column);
+  plots.at(row).at(column) = plot;
+  delete current_plot;
+}
+
+
+void Farm::harvest(int row, int column) {
+  Plot *current_plot = plots.at(row).at(column);
+  if (current_plot->symbol() != "") {
+    Soil* new_soil = new Soil();
+    plots.at(row).at(column) = new_soil;
+    delete current_plot;
+  }
+}
+
+
+#include "Farm.hpp"
+
+Farm::~Farm() {
+  for (auto& row : plots) {
+    for (auto* plot : row) {
+      delete plot;  // free memory
+    }
+  }
+}
+
