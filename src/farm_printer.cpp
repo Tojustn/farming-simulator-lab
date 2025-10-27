@@ -1,18 +1,19 @@
 #include <string>
 
 #include "farm.hpp"
-#include "farm_printer.h"
+#include "farm_printer.hpp"
 
 FarmPrinter::FarmPrinter(Farm *farm) : farm(farm) {}
 
 std::string FarmPrinter::pp() {
-    std::string output = "";
-    for(int i = 0; i < farm->number_of_rows(); i++) {
-        for(int j = 0; j < farm->number_of_columns(); j++) {
-            output += farm-> get_symbol(i, j);
-            output += " ";
-        }
-        output += "\n";
+  std::string output = "";
+  output += "\nDay: " + std::to_string(farm->get_day()) + "\n";
+  for(int i = 0; i < farm->number_of_rows(); i++) {
+    for(int j = 0; j < farm->number_of_columns(); j++) {
+      output += farm-> get_symbol(i, j);
+      output += " ";
     }
-    return output;
+    output += "\n";
+  }
+  return output;
 }

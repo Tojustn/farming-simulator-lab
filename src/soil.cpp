@@ -1,5 +1,10 @@
-#include "soil.h"
+#include "soil.hpp"
 
 std::string Soil::symbol() {
-    return ".";
+  return ".";
+}
+
+void Soil::end_day() {}
+int Soil::get_age() {
+  return 0;
 }

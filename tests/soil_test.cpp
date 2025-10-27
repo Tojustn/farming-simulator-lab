@@ -3,9 +3,15 @@
 #include <catch2/benchmark/catch_constructor.hpp>
 #include <catch2/generators/catch_generators_range.hpp>
 
-#include "../src/soil.h"
+#include "../src/soil.hpp"
 
 TEST_CASE( "it returns a dot as its symbol" ) {
-    Soil soil;
-    REQUIRE( soil.symbol() == "." );
+  Soil soil;
+  REQUIRE( soil.symbol() == "." );
+}
+TEST_CASE("The soil doesn't age") {
+  Soil soil;
+  REQUIRE( soil.get_age() == 0 );
+  soil.end_day();
+  REQUIRE( soil.get_age() == 0 );
 }

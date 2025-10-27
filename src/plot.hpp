@@ -3,6 +3,9 @@
 #include <string>
 
 class Plot {
-public:
+  public:
     virtual std::string symbol() = 0;
+    virtual void end_day() = 0;
+    virtual int get_age() = 0;
+
 };

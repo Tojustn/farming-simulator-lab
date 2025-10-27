@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "farm.hpp"
-#include "soil.h"
+#include "soil.hpp"
 
 Farm::Farm(int rows, int columns, Player *player) : rows(rows), columns(columns), player(player) {
   for(int i = 0; i < rows; i++) {
@@ -33,6 +33,41 @@ std::string Farm::get_symbol(int row, int column) {
 
 void Farm::plant(int row, int column, Plot *plot) {
   Plot *current_plot = plots.at(row).at(column);
-  plots.at(row).at(column) = plot;
-  delete current_plot;
+
+  if (current_plot->symbol() == ".") {
+    plots.at(row).at(column) = plot;
+    delete current_plot;
+  } else {
+    delete plot;
+  }
 }
+void Farm::harvest(int row, int column) {
+  Plot *current_plot = plots.at(row).at(column);
+  if (current_plot->symbol() != "." && current_plot->get_age() > 0) {
+    Soil* new_soil = new Soil();
+    plots.at(row).at(column) = new_soil;
+    delete current_plot;
+  }
+}
+
+void Farm::next_day() {
+  this->current_day += 1;
+  for(int i = 0; i < rows; i++) {
+    for(int j = 0; j < columns; j++) {
+      plots.at(i).at(j)->end_day();
+    }
+  }
+}
+
+int Farm::get_day() {
+  return this->current_day;
+}
+
+Farm::~Farm() {
+  for (auto& row : plots) {
+    for (auto* plot : row) {
+      delete plot;  // free memory
+    }
+  }
+}
+

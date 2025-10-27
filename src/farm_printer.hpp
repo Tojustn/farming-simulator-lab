@@ -1,10 +1,10 @@
 #pragma once
 
 class FarmPrinter {
-private:
+  private:
     Farm *farm;
 
-public:
+  public:
     FarmPrinter(Farm *farm);
     std::string pp();
 };

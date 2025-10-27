@@ -3,24 +3,55 @@
 #include <catch2/benchmark/catch_constructor.hpp>
 #include <catch2/generators/catch_generators_range.hpp>
 
-#include "../src/player.h"
+#include "../src/player.hpp"
 
 TEST_CASE( "it starts the player in row zero, column zero" ) {
-    Player player;
-    REQUIRE( player.row() == 0 );
-    REQUIRE( player.column() == 0 );
+  Player player;
+  REQUIRE( player.row() == 0 );
+  REQUIRE( player.column() == 0 );
 }
 
 TEST_CASE( "it moves the player to the right" ) {
-    Player player;
-    player.move_right();
-    REQUIRE( player.row() == 0 );
-    REQUIRE( player.column() == 1 );
+  Player player;
+  player.move_right(5);
+  REQUIRE( player.row() == 0 );
+  REQUIRE( player.column() == 1 );
 }
 
 TEST_CASE( "it moves the player down" ) {
-    Player player;
-    player.move_down();
-    REQUIRE( player.row() == 1 );
-    REQUIRE( player.column() == 0 );
+  Player player;
+  player.move_down(5);
+  REQUIRE( player.row() == 1 );
+  REQUIRE( player.column() == 0 );
+}
+
+
+TEST_CASE("Player moves left and up") {
+  Player player;
+  player.move_right(5);
+  player.move_down(5);
+
+  player.move_left();
+  REQUIRE(player.row() == 1);
+  REQUIRE(player.column() == 0);
+
+  player.move_up();
+  REQUIRE(player.row() == 0);
+  REQUIRE(player.column() == 0);
+}
+
+TEST_CASE("Player cannot move out of bounds") {
+  Player player;
+
+  player.move_left();
+  player.move_up();
+  REQUIRE(player.row() == 0);
+  REQUIRE(player.column() == 0);
+
+  for(int i = 0; i < 10; ++i) {
+    player.move_down(5);
+    player.move_right(5);
+  }
+  REQUIRE(player.row() == 4);  // max row = 5 - 1
+  REQUIRE(player.column() == 4); // max column = 5 - 1
 }
