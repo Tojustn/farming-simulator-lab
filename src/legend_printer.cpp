@@ -5,6 +5,7 @@ std::string LegendPrinter::pp() {
   output += "=== LEGEND ===\n";
   output += "@  Player\n";
   output += ".  Soil\n";
+  output += "#  Tilled soil\n";
   output += "v  Carrot (seedling)\n";
   output += "V  Carrot (growing)\n";
   output += "W  Carrot (ready)\n";

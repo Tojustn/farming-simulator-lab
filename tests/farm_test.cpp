@@ -53,7 +53,7 @@ TEST_CASE( "it allows us to plant a carrot" ) {
   Farm farm(1, 2, &player);
   Carrot *carrot = new Carrot();
   farm.plant(0, 1, carrot);
-  REQUIRE( farm.get_symbol(0, 1) == "v" );
+  REQUIRE( farm.get_symbol(0, 1) == "#" );
 }
 
 TEST_CASE( "it allows us to water a carrot" ) {
@@ -77,11 +77,21 @@ TEST_CASE( "it allows us to harvest a fully grown carrot" ) {
   REQUIRE( farm.get_symbol(0, 1) == "." );
 }
 
+TEST_CASE( "it does not harvest a tilled soil carrot" ) {
+  Player player;
+  Farm farm(1, 2, &player);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
+  farm.harvest(0, 1);
+  REQUIRE( farm.get_symbol(0, 1) == "#" );
+}
+
 TEST_CASE( "it does not harvest a seedling carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
   Carrot *carrot = new Carrot();
   farm.plant(0, 1, carrot);
+  farm.end_day();
   farm.harvest(0, 1);
   REQUIRE( farm.get_symbol(0, 1) == "v" );
 }
