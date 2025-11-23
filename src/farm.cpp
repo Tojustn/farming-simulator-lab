@@ -49,3 +49,7 @@ void Farm::end_day() {
     }
   }
 }
+
+bool Farm::is_valid_position(int row, int column) {
+  return row >= 0 && row < rows && column >= 0 && column < columns;
+}

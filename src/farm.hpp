@@ -21,4 +21,5 @@ class Farm {
     void water(int row, int column);
     void plant(int row, int column, Plot *plot);
     void end_day();
+    bool is_valid_position(int row, int column);
 };

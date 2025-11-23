@@ -15,3 +15,9 @@ void Player::move_right() {
 void Player::move_down() {
   current_row += 1;
 }
+void Player::move_up() {
+  current_row -= 1;
+}
+void Player::move_left() {
+  current_column -= 1;
+}

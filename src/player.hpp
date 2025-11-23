@@ -8,6 +8,8 @@ class Player {
   public:
     int row();
     int column();
+    void move_up();
+    void move_left();
     void move_right();
     void move_down();
 };

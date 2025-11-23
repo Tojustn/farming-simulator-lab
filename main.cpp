@@ -20,10 +20,22 @@ int main() {
 
     if(player_input == "q") {
       game_in_progress = false;
+    } else if(player_input == "w") {
+      if(farm.is_valid_position(player.row() - 1, player.column())) {
+        player.move_up();
+      }
+    } else if(player_input == "a") {
+      if(farm.is_valid_position(player.row(), player.column() - 1)) {
+        player.move_left();
+      }
     } else if(player_input == "d") {
-      player.move_right();
+      if(farm.is_valid_position(player.row(), player.column() + 1)) {
+        player.move_right();
+      }
     } else if(player_input == "s") {
-      player.move_down();
+      if(farm.is_valid_position(player.row() + 1, player.column())) {
+        player.move_down();
+      }
     } else if(player_input == "c") {
       Carrot *carrot = new Carrot();
       farm.plant(player.row(), player.column(), carrot);
