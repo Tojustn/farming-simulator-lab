@@ -43,6 +43,7 @@ void Farm::water(int row, int column) {
 }
 
 void Farm::end_day() {
+  day++;
   for(int i = 0; i < rows; i++) {
     for(int j = 0; j < columns; j++) {
       plots.at(i).at(j)->end_day();
@@ -52,4 +53,8 @@ void Farm::end_day() {
 
 bool Farm::is_valid_position(int row, int column) {
   return row >= 0 && row < rows && column >= 0 && column < columns;
+}
+
+int Farm::get_day() {
+  return day;
 }
