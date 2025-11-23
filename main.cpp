@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "src/legend_printer.hpp"
 #include "src/player.hpp"
 #include "src/farm.hpp"
 #include "src/farm_printer.hpp"
@@ -12,6 +13,13 @@ int main() {
   FarmPrinter printer(&farm);
   bool game_in_progress = true;
   std::string player_input;
+  LegendPrinter legend_printer;
+
+  // Show legend at start
+  ansi_clear();
+  std::cout << legend_printer.pp() << std::endl;
+  std::cout << "Press any key to start..." << std::endl;
+  std::cin >> player_input;
 
   while(game_in_progress) {
     ansi_clear();
@@ -43,6 +51,11 @@ int main() {
       farm.water(player.row(), player.column());
     } else if(player_input == "e") {
       farm.end_day();
+    } else if(player_input == "?") {
+      ansi_clear();
+      std::cout << legend_printer.pp() << std::endl;
+      std::cout << "Press any key to continue..." << std::endl;
+      std::cin >> player_input;
     }
   }
 }
