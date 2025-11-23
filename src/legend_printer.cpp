@@ -14,6 +14,7 @@ std::string LegendPrinter::pp() {
   output += "s  Move down\n";
   output += "d  Move right\n";
   output += "c  Plant carrot\n";
+  output += "h  Harvest\n";
   output += "t  Water\n";
   output += "e  End day\n";
   output += "?  Show legend\n";

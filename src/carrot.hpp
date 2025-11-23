@@ -14,4 +14,5 @@ class Carrot : public Plot {
     void end_day() override;
     void water() override;
     int get_age();
+    bool is_harvestable() override;
 };

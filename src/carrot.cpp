@@ -1,6 +1,7 @@
 #include <string>
 
 #include "carrot.hpp"
+#include "soil.hpp"
 
 std::string Carrot::symbol() {
   if(age == 0) {
@@ -28,3 +29,8 @@ void Carrot::water() {
 int Carrot::get_age() {
   return age;
 }
+
+bool Carrot::is_harvestable() {
+  return age > 2;
+}
+
