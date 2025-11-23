@@ -51,16 +51,16 @@ TEST_CASE( "it returns the symbols for a 2x1 farm" ) {
 TEST_CASE( "it allows us to plant a carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
-  Carrot carrot;
-  farm.plant(0, 1, &carrot);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
   REQUIRE( farm.get_symbol(0, 1) == "v" );
 }
 
 TEST_CASE( "it allows us to water a carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
-  Carrot carrot;
-  farm.plant(0, 1, &carrot);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
   farm.water(0, 1);
   // REQUIRE( farm.get_symbol(0, 1) == "v" );     You get to decide!!!
 }
@@ -68,8 +68,8 @@ TEST_CASE( "it allows us to water a carrot" ) {
 TEST_CASE( "it allows us to harvest a fully grown carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
-  Carrot carrot;
-  farm.plant(0, 1, &carrot);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
   farm.end_day();
   farm.end_day();
   farm.end_day();
@@ -80,8 +80,8 @@ TEST_CASE( "it allows us to harvest a fully grown carrot" ) {
 TEST_CASE( "it does not harvest a seedling carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
-  Carrot carrot;
-  farm.plant(0, 1, &carrot);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
   farm.harvest(0, 1);
   REQUIRE( farm.get_symbol(0, 1) == "v" );
 }
@@ -89,8 +89,8 @@ TEST_CASE( "it does not harvest a seedling carrot" ) {
 TEST_CASE( "it does not harvest a growing carrot" ) {
   Player player;
   Farm farm(1, 2, &player);
-  Carrot carrot;
-  farm.plant(0, 1, &carrot);
+  Carrot *carrot = new Carrot();
+  farm.plant(0, 1, carrot);
   farm.end_day();
   farm.harvest(0, 1);
   REQUIRE( farm.get_symbol(0, 1) == "V" );
