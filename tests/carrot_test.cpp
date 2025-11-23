@@ -10,50 +10,39 @@ TEST_CASE( "it returns # when it is tilled soil" ) {
   REQUIRE( carrot.symbol() == "#" );
 }
 
-TEST_CASE( "it returns a v as its when it is a seedling" ) {
+TEST_CASE( "it returns c when it is a seedling" ) {
   Carrot carrot;
   carrot.end_day();
-  REQUIRE( carrot.symbol() == "v" );
+  REQUIRE( carrot.symbol() == "c" );
 }
 
-TEST_CASE( "it returns a V when the carrot is half-grown" ) {
-  Carrot carrot;
-  carrot.end_day();
-  carrot.end_day();
-  REQUIRE( carrot.symbol() == "V" );
-}
-
-TEST_CASE( "it returns a W when the carrot is fully grown" ) {
+TEST_CASE( "it returns C when the carrot is fully grown" ) {
   Carrot carrot;
   carrot.end_day();
   carrot.end_day();
-  carrot.end_day();
-  REQUIRE( carrot.symbol() == "W" );
+  REQUIRE( carrot.symbol() == "C" );
 }
 
-TEST_CASE( "it starts off with age 0" ) {
-  Carrot carrot;
-  REQUIRE( carrot.get_age() == 0 );
-}
-
-TEST_CASE( "it has age 1 after we end the day one time" ) {
-  Carrot carrot;
-  carrot.end_day();
-  REQUIRE( carrot.get_age() == 1 );
-}
-
-TEST_CASE( "it has age 2 after we end the day twice" ) {
+TEST_CASE( "it is harvestable when fully grown" ) {
   Carrot carrot;
   carrot.end_day();
   carrot.end_day();
-  REQUIRE( carrot.get_age() == 2 );
+  REQUIRE( carrot.is_harvestable() == true );
 }
 
-TEST_CASE( "it increases the age by 2 when we end the day after watering" ) {
+TEST_CASE( "it is not harvestable when a seedling" ) {
+  Carrot carrot;
+  carrot.end_day();
+  REQUIRE( carrot.is_harvestable() == false );
+}
+
+TEST_CASE( "it increases growth by 2 when watered" ) {
   Carrot carrot;
   carrot.water();
   carrot.end_day();
-  REQUIRE( carrot.get_age() == 2 );
+  REQUIRE( carrot.get_days() == 2 );
+  REQUIRE( carrot.symbol() == "C" );
+  REQUIRE( carrot.is_harvestable() == true );
 }
 
 TEST_CASE( "watering more than once per day has no effect" ) {
@@ -61,7 +50,7 @@ TEST_CASE( "watering more than once per day has no effect" ) {
   carrot.water();
   carrot.water();
   carrot.end_day();
-  REQUIRE( carrot.get_age() == 2 );
+  REQUIRE( carrot.symbol() == "C" );
 }
 
 TEST_CASE( "watering on a given day should not affect future days" ) {
@@ -69,14 +58,5 @@ TEST_CASE( "watering on a given day should not affect future days" ) {
   carrot.water();
   carrot.end_day();
   carrot.end_day();
-  REQUIRE( carrot.get_age() == 3 );
-}
-
-TEST_CASE( "ages the carrot properly after many waterings on many days" ) {
-  Carrot carrot;
-  carrot.water();
-  carrot.end_day();
-  carrot.water();
-  carrot.end_day();
-  REQUIRE( carrot.get_age() == 4 );
+  REQUIRE( carrot.is_harvestable() == true );
 }

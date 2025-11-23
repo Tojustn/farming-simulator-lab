@@ -1,19 +1,19 @@
 #include <string>
 
-#include "carrot.hpp"
+#include "spinach.hpp"
 #include "soil.hpp"
 
-std::string Carrot::symbol() {
+std::string Spinach::symbol() {
   if(days == 0) {
     return "#";
   } else if(days <= days_to_sprout) {
-    return "c";
+    return "s";
   } else {
-    return "C";
+    return "S";
   }
 }
 
-void Carrot::end_day() {
+void Spinach::end_day() {
   if(watered) {
     days += 2;
   } else {
@@ -22,15 +22,15 @@ void Carrot::end_day() {
   watered = false;
 }
 
-void Carrot::water() {
+void Spinach::water() {
   watered = true;
 }
 
-bool Carrot::is_harvestable() {
+bool Spinach::is_harvestable() {
   return days >= (days_to_sprout + days_to_maturity);
 }
 
-int Carrot::get_days() {
+int Spinach::get_days() {
   return days;
 }
 

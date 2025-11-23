@@ -4,12 +4,12 @@
 
 #include "plot.hpp"
 
-class Carrot : public Plot {
+class Lettuce : public Plot {
   private:
     int days = 0;
     bool watered = false;
-    static const int days_to_sprout = 1;
-    static const int days_to_maturity = 1;
+    static const int days_to_sprout = 2;
+    static const int days_to_maturity = 2;
 
   public:
     std::string symbol() override;
@@ -18,3 +18,4 @@ class Carrot : public Plot {
     bool is_harvestable() override;
     int get_days();
 };
+

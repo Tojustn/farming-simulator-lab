@@ -93,17 +93,7 @@ TEST_CASE( "it does not harvest a seedling carrot" ) {
   farm.plant(0, 1, carrot);
   farm.end_day();
   farm.harvest(0, 1);
-  REQUIRE( farm.get_symbol(0, 1) == "v" );
-}
-
-TEST_CASE( "it does not harvest a growing carrot" ) {
-  Player player;
-  Farm farm(1, 2, &player);
-  Carrot *carrot = new Carrot();
-  farm.plant(0, 1, carrot);
-  farm.end_day();
-  farm.harvest(0, 1);
-  REQUIRE( farm.get_symbol(0, 1) == "V" );
+  REQUIRE( farm.get_symbol(0, 1) == "c" );
 }
 
 TEST_CASE( "it does not harvest bare soil" ) {

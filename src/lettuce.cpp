@@ -1,19 +1,19 @@
 #include <string>
 
-#include "carrot.hpp"
+#include "lettuce.hpp"
 #include "soil.hpp"
 
-std::string Carrot::symbol() {
+std::string Lettuce::symbol() {
   if(days == 0) {
     return "#";
   } else if(days <= days_to_sprout) {
-    return "c";
+    return "l";
   } else {
-    return "C";
+    return "L";
   }
 }
 
-void Carrot::end_day() {
+void Lettuce::end_day() {
   if(watered) {
     days += 2;
   } else {
@@ -22,15 +22,15 @@ void Carrot::end_day() {
   watered = false;
 }
 
-void Carrot::water() {
+void Lettuce::water() {
   watered = true;
 }
 
-bool Carrot::is_harvestable() {
+bool Lettuce::is_harvestable() {
   return days >= (days_to_sprout + days_to_maturity);
 }
 
-int Carrot::get_days() {
+int Lettuce::get_days() {
   return days;
 }
 
