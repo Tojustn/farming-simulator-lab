@@ -22,15 +22,11 @@ TEST_CASE( "it returns S when the spinach is fully grown" ) {
   spinach.end_day();
   spinach.end_day();
   spinach.end_day();
-  spinach.end_day();
-  spinach.end_day();
   REQUIRE( spinach.symbol() == "S" );
 }
 
 TEST_CASE( "it is harvestable when fully grown" ) {
   Spinach spinach;
-  spinach.end_day();
-  spinach.end_day();
   spinach.end_day();
   spinach.end_day();
   spinach.end_day();
@@ -51,10 +47,6 @@ TEST_CASE( "it increases growth by 2 when watered" ) {
   REQUIRE( spinach.get_days() == 2 );
   spinach.end_day();
   REQUIRE( spinach.get_days() == 3 );
-  spinach.end_day();
-  REQUIRE( spinach.get_days() == 4 );
-  spinach.end_day();
-  REQUIRE( spinach.get_days() == 5 );
   REQUIRE( spinach.symbol() == "S" );
   REQUIRE( spinach.is_harvestable() == true );
 }

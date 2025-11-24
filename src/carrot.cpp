@@ -4,12 +4,12 @@
 #include "soil.hpp"
 
 std::string Carrot::symbol() {
-  if(days == 0) {
-    return "#";
-  } else if(days <= days_to_sprout) {
-    return "c";
+  if (days < days_to_sprout) {
+    return "#";  // tilled/seed
+  } else if (days >= days_to_maturity) {
+    return "C";  // fully grown
   } else {
-    return "C";
+    return "c";  // sprouted but not mature
   }
 }
 
@@ -27,7 +27,7 @@ void Carrot::water() {
 }
 
 bool Carrot::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Carrot::get_days() {

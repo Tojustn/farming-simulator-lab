@@ -4,12 +4,12 @@
 #include "soil.hpp"
 
 std::string Lettuce::symbol() {
-  if(days == 0) {
-    return "#";
-  } else if(days <= days_to_sprout) {
-    return "l";
+  if (days < days_to_sprout) {
+    return "#";  // tilled/seed
+  } else if (days >= days_to_maturity) {
+    return "L";  // fully grown
   } else {
-    return "L";
+    return "l";  // sprouted but not mature
   }
 }
 
@@ -27,7 +27,7 @@ void Lettuce::water() {
 }
 
 bool Lettuce::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Lettuce::get_days() {

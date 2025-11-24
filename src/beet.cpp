@@ -4,12 +4,12 @@
 #include "soil.hpp"
 
 std::string Beet::symbol() {
-  if(days == 0) {
-    return "#";
-  } else if(days <= days_to_sprout) {
-    return "b";
+  if (days < days_to_sprout) {
+    return "#";  // tilled/seed
+  } else if (days >= days_to_maturity) {
+    return "B";  // fully grown
   } else {
-    return "B";
+    return "b";  // sprouted but not mature
   }
 }
 
@@ -27,7 +27,7 @@ void Beet::water() {
 }
 
 bool Beet::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Beet::get_days() {

@@ -22,7 +22,7 @@ TEST_CASE( "it returns r when it is a seedling" ) {
 
 TEST_CASE( "it returns R when the brussels sprouts is fully grown" ) {
   BrusselsSprouts brussels;
-  for(int i = 0; i < 15; i++) {
+  for(int i = 0; i < 10; i++) {
     brussels.end_day();
   }
   REQUIRE( brussels.symbol() == "R" );
@@ -30,7 +30,7 @@ TEST_CASE( "it returns R when the brussels sprouts is fully grown" ) {
 
 TEST_CASE( "it is harvestable when fully grown" ) {
   BrusselsSprouts brussels;
-  for(int i = 0; i < 15; i++) {
+  for(int i = 0; i < 10; i++) {
     brussels.end_day();
   }
   REQUIRE( brussels.is_harvestable() == true );
@@ -67,16 +67,6 @@ TEST_CASE( "it increases growth by 2 when watered" ) {
   REQUIRE( brussels.get_days() == 9 );
   brussels.end_day();
   REQUIRE( brussels.get_days() == 10 );
-  brussels.end_day();
-  REQUIRE( brussels.get_days() == 11 );
-  brussels.end_day();
-  REQUIRE( brussels.get_days() == 12 );
-  brussels.end_day();
-  REQUIRE( brussels.get_days() == 13 );
-  brussels.end_day();
-  REQUIRE( brussels.get_days() == 14 );
-  brussels.end_day();
-  REQUIRE( brussels.get_days() == 15 );
   REQUIRE( brussels.symbol() == "R" );
   REQUIRE( brussels.is_harvestable() == true );
 }

@@ -4,12 +4,12 @@
 #include "soil.hpp"
 
 std::string Spinach::symbol() {
-  if(days == 0) {
-    return "#";
-  } else if(days <= days_to_sprout) {
-    return "s";
+  if (days < days_to_sprout) {
+    return "#";  // tilled/seed
+  } else if (days >= days_to_maturity) {
+    return "S";  // fully grown
   } else {
-    return "S";
+    return "s";  // sprouted but not mature
   }
 }
 
@@ -27,7 +27,7 @@ void Spinach::water() {
 }
 
 bool Spinach::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Spinach::get_days() {
