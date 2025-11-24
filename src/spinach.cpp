@@ -9,7 +9,7 @@ std::string Spinach::symbol() {
   } else if (days < days_to_sprout + days_to_maturity) {
     return "s";
   } else {
-    return "S";
+    return "s";  // sprouted but not mature
   }
 }
 
@@ -27,7 +27,7 @@ void Spinach::water() {
 }
 
 bool Spinach::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Spinach::get_days() {

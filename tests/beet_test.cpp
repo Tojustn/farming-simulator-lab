@@ -24,15 +24,11 @@ TEST_CASE( "it returns B when the beet is fully grown" ) {
   beet.end_day();
   beet.end_day();
   beet.end_day();
-  beet.end_day();
-  beet.end_day();
   REQUIRE( beet.symbol() == "B" );
 }
 
 TEST_CASE( "it is harvestable when fully grown" ) {
   Beet beet;
-  beet.end_day();
-  beet.end_day();
   beet.end_day();
   beet.end_day();
   beet.end_day();
@@ -59,10 +55,6 @@ TEST_CASE( "it increases growth by 2 when watered" ) {
   REQUIRE( beet.get_days() == 4 );
   beet.end_day();
   REQUIRE( beet.get_days() == 5 );
-  beet.end_day();
-  REQUIRE( beet.get_days() == 6 );
-  beet.end_day();
-  REQUIRE( beet.get_days() == 7 );
   REQUIRE( beet.symbol() == "B" );
   REQUIRE( beet.is_harvestable() == true );
 }

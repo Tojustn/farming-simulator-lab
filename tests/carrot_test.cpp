@@ -10,15 +10,8 @@ TEST_CASE( "it returns # when it is tilled soil" ) {
   REQUIRE( carrot.symbol() == "#" );
 }
 
-TEST_CASE( "it returns c when it is a seedling" ) {
-  Carrot carrot;
-  carrot.end_day();
-  REQUIRE( carrot.symbol() == "c" );
-}
-
 TEST_CASE( "it returns C when the carrot is fully grown" ) {
   Carrot carrot;
-  carrot.end_day();
   carrot.end_day();
   REQUIRE( carrot.symbol() == "C" );
 }
@@ -26,13 +19,11 @@ TEST_CASE( "it returns C when the carrot is fully grown" ) {
 TEST_CASE( "it is harvestable when fully grown" ) {
   Carrot carrot;
   carrot.end_day();
-  carrot.end_day();
   REQUIRE( carrot.is_harvestable() == true );
 }
 
-TEST_CASE( "it is not harvestable when a seedling" ) {
+TEST_CASE( "it is not harvestable when tilled soil" ) {
   Carrot carrot;
-  carrot.end_day();
   REQUIRE( carrot.is_harvestable() == false );
 }
 

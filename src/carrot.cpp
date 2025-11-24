@@ -9,7 +9,7 @@ std::string Carrot::symbol() {
   } else if (days < days_to_sprout + days_to_maturity) {
       return "c"; 
   } else {
-      return "C"; 
+    return "C";
   }
 }
 
@@ -27,7 +27,7 @@ void Carrot::water() {
 }
 
 bool Carrot::is_harvestable() {
-  return days >= (days_to_sprout + days_to_maturity);
+  return days >= days_to_maturity;
 }
 
 int Carrot::get_days() {
