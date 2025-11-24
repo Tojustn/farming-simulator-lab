@@ -5,11 +5,11 @@
 
 std::string Beet::symbol() {
   if (days < days_to_sprout) {
-    return "#";  // tilled/seed
-  } else if (days >= days_to_maturity) {
-    return "B";  // fully grown
+    return "#";
+  } else if (days < days_to_sprout + days_to_maturity) {
+    return "b";
   } else {
-    return "b";  // sprouted but not mature
+    return "B";
   }
 }
 

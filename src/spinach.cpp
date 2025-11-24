@@ -5,9 +5,9 @@
 
 std::string Spinach::symbol() {
   if (days < days_to_sprout) {
-    return "#";  // tilled/seed
-  } else if (days >= days_to_maturity) {
-    return "S";  // fully grown
+    return "#";
+  } else if (days < days_to_sprout + days_to_maturity) {
+    return "s";
   } else {
     return "s";  // sprouted but not mature
   }

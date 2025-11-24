@@ -4,13 +4,13 @@
 #include "soil.hpp"
 
 std::string BrusselsSprouts::symbol() {
-    if (days < days_to_sprout) {
-        return "#";  // tilled/seed
-    } else if (days >= days_to_maturity) {
-        return "R";  // fully grown
-    } else {
-        return "r";  // sprouted but not mature
-    }
+  if (days < days_to_sprout) {
+    return "#";
+  } else if (days < days_to_sprout + days_to_maturity) {
+    return "r";
+  } else {
+    return "R";
+  }
 }
 
 void BrusselsSprouts::end_day() {

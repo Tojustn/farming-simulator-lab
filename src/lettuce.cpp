@@ -5,11 +5,11 @@
 
 std::string Lettuce::symbol() {
   if (days < days_to_sprout) {
-    return "#";  // tilled/seed
-  } else if (days >= days_to_maturity) {
-    return "L";  // fully grown
+    return "#";
+  } else if (days < days_to_sprout + days_to_maturity) {
+    return "l";
   } else {
-    return "l";  // sprouted but not mature
+    return "L";
   }
 }
 
