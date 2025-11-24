@@ -27,7 +27,7 @@ void Beet::water() {
 }
 
 bool Beet::is_harvestable() {
-  return days >= days_to_maturity;
+  return days >= (days_to_sprout + days_to_maturity);
 }
 
 int Beet::get_days() {

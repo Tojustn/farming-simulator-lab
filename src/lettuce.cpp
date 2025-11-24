@@ -27,7 +27,7 @@ void Lettuce::water() {
 }
 
 bool Lettuce::is_harvestable() {
-  return days >= days_to_maturity;
+  return days >= (days_to_sprout + days_to_maturity);
 }
 
 int Lettuce::get_days() {
