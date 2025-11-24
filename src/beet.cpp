@@ -4,9 +4,9 @@
 #include "soil.hpp"
 
 std::string Beet::symbol() {
-  if(days == 0) {
+  if (days < days_to_sprout) {
     return "#";
-  } else if(days <= days_to_sprout) {
+  } else if (days < days_to_sprout + days_to_maturity) {
     return "b";
   } else {
     return "B";

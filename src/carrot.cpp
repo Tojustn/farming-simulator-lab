@@ -4,12 +4,12 @@
 #include "soil.hpp"
 
 std::string Carrot::symbol() {
-  if(days == 0) {
-    return "#";
-  } else if(days <= days_to_sprout) {
-    return "c";
+  if (days < days_to_sprout) { 
+      return "#"; 
+  } else if (days < days_to_sprout + days_to_maturity) {
+      return "c"; 
   } else {
-    return "C";
+      return "C"; 
   }
 }
 
