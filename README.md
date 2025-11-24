@@ -2,12 +2,10 @@
 
 ## Design Decision: Growth Timing Interpretation
 
-I interpreted "Days to Maturity" as being measured from planting (not from
-sprouting). This means plants with equal days_to_sprout and days_to_maturity
-(Carrot, Lettuce) skip the visible seedling stage.
+I interpreted "Days to Maturity" as additional days after sprouting
 
-Alternative interpretation: Days to Maturity could mean additional days after
-sprouting, which would make all plants show 3 distinct stages. Which is actually implemented in the previous commit so if you want ot see that just git clone, and git checkout 03563dba2cde468ec022fd9a3e1eba87f230cdc6
+Alternative interpretation: Being measured from planting (not from sprouting). This means plants with equal days_to_sprout and days_to_maturity
+(Carrot, Lettuce) skip the visible seedling stage.
 
 
 This is a template repository for our semester-long portfolio project. Create a new repository on GitHub to house your code. Be sure to make the repository public so that I can view and grade it.
