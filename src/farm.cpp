@@ -185,20 +185,19 @@ int Farm::get_day() {
 }
 
 void Farm::spawn_bunny() {
-  // Random edge position - ensure we spawn exactly on the edge
   int edge = rand() % 4;  // 0=top, 1=bottom, 2=left, 3=right
   int spawn_row = -1;
   int spawn_col = -1;
   int dir_row, dir_col;
   
   switch(edge) {
-    case 0:  // Top edge - row 0
+    case 0:  
       spawn_row = 0;
       spawn_col = rand() % columns;
       dir_row = 1;  // Move down
       dir_col = 0;
       break;
-    case 1:  // Bottom edge - last row
+    case 1:  
       spawn_row = rows - 1;
       spawn_col = rand() % columns;
       dir_row = -1;  // Move up
@@ -210,7 +209,7 @@ void Farm::spawn_bunny() {
       dir_row = 0;
       dir_col = 1;  // Move right
       break;
-    case 3:  // Right edge - last column
+    case 3:  
       spawn_row = rand() % rows;
       spawn_col = columns - 1;
       dir_row = 0;
@@ -241,14 +240,11 @@ void Farm::check_player_proximity() {
     int bunny_row = bunny->get_row();
     int bunny_col = bunny->get_column();
     
-    // Check if player is adjacent (one of 4 squares)
-    bool is_adjacent = false;
-    if((bunny_row == player_row - 1 && bunny_col == player_col) ||  // Up
-       (bunny_row == player_row + 1 && bunny_col == player_col) ||  // Down
-       (bunny_row == player_row && bunny_col == player_col - 1) ||  // Left
-       (bunny_row == player_row && bunny_col == player_col + 1)) {  // Right
-      is_adjacent = true;
-    }
+    int row_diff = (bunny_row > player_row) ? (bunny_row - player_row) : (player_row - bunny_row);
+    int col_diff = (bunny_col > player_col) ? (bunny_col - player_col) : (player_col - bunny_col);
+    
+
+    bool is_adjacent = (row_diff == 1 && col_diff == 0) || (row_diff == 0 && col_diff == 1);
     
     if(is_adjacent) {
       bunny->set_scared(player_row, player_col);
