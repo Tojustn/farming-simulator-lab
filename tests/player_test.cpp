@@ -57,6 +57,7 @@ TEST_CASE( "it can move in multiple directions" ) {
 TEST_CASE( "farm validates positions within bounds" ) {
   Player player;
   Farm farm(5, 7, &player);
+  farm.set_bunny_spawn(false);
   REQUIRE( farm.is_valid_position(0, 0) == true );
   REQUIRE( farm.is_valid_position(4, 6) == true );
   REQUIRE( farm.is_valid_position(2, 3) == true );
@@ -65,6 +66,7 @@ TEST_CASE( "farm validates positions within bounds" ) {
 TEST_CASE( "farm rejects positions out of bounds" ) {
   Player player;
   Farm farm(5, 7, &player);
+  farm.set_bunny_spawn(false);
   REQUIRE( farm.is_valid_position(-1, 0) == false );
   REQUIRE( farm.is_valid_position(0, -1) == false );
   REQUIRE( farm.is_valid_position(5, 0) == false );

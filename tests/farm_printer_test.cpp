@@ -10,27 +10,31 @@
 TEST_CASE( "it pretty prints a single plot of land" ) {
   Player player;
   Farm farm(1, 1, &player);
+  farm.set_bunny_spawn(false);
   FarmPrinter printer(&farm);
-  REQUIRE( printer.pp() == "@ \n" );
+  REQUIRE( printer.pp() == "Day 0\nBunnies: 0\n@ \n" );
 }
 
 TEST_CASE( "it pretty prints a 1x2 farm" ) {
   Player player;
   Farm farm(1, 2, &player);
+  farm.set_bunny_spawn(false);
   FarmPrinter printer(&farm);
-  REQUIRE( printer.pp() == "@ . \n" );
+  REQUIRE( printer.pp() == "Day 0\nBunnies: 0\n@ . \n" );
 }
 
 TEST_CASE( "it pretty prints a 2x1 farm" ) {
   Player player;
   Farm farm(2, 1, &player);
+  farm.set_bunny_spawn(false);
   FarmPrinter printer(&farm);
-  REQUIRE( printer.pp() == "@ \n. \n" );
+  REQUIRE( printer.pp() == "Day 0\nBunnies: 0\n@ \n. \n" );
 }
 
 TEST_CASE( "it pretty prints a 2x2 farm" ) {
   Player player;
   Farm farm(2, 2, &player);
+  farm.set_bunny_spawn(false);
   FarmPrinter printer(&farm);
-  REQUIRE( printer.pp() == "@ . \n. . \n" );
+  REQUIRE( printer.pp() == "Day 0\nBunnies: 0\n@ . \n. . \n" );
 }

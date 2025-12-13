@@ -4,6 +4,7 @@ std::string LegendPrinter::pp() {
   std::string output = "";
   output += "=== LEGEND ===\n";
   output += "@  Player\n";
+  output += "u  Bunny rabbit\n";
   output += ".  Soil\n";
   output += "#  Tilled soil (all vegetables)\n";
   output += "\nVegetable Growth Stages:\n";
@@ -12,6 +13,10 @@ std::string LegendPrinter::pp() {
   output += "Spinach:         # -> s -> S\n";
   output += "Beet:            # -> b -> B\n";
   output += "Brussels Sprouts: # -> r -> R\n";
+  output += "\nBunny Behavior:\n";
+  output += "- Bunnies spawn on farm edges (30% chance per day)\n";
+  output += "- They move in straight lines and eat vegetables\n";
+  output += "- Get close to scare them away!\n";
   output += "\n=== CONTROLS ===\n";
   output += "w  Move up\n";
   output += "a  Move left\n";

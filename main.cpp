@@ -19,6 +19,9 @@ int main() {
   std::string player_input;
   LegendPrinter legend_printer;
 
+  // Run start of day for day 0
+  farm.start_day();
+
   // Show legend at start
   ansi_clear();
   std::cout << legend_printer.pp() << std::endl;
@@ -33,20 +36,28 @@ int main() {
     if(player_input == "q") {
       game_in_progress = false;
     } else if(player_input == "w") {
-      if(farm.is_valid_position(player.row() - 1, player.column())) {
+      if(farm.is_valid_position(player.row() - 1, player.column()) && 
+         !farm.has_bunny_at(player.row() - 1, player.column())) {
         player.move_up();
+        farm.check_player_proximity();
       }
     } else if(player_input == "a") {
-      if(farm.is_valid_position(player.row(), player.column() - 1)) {
+      if(farm.is_valid_position(player.row(), player.column() - 1) && 
+         !farm.has_bunny_at(player.row(), player.column() - 1)) {
         player.move_left();
+        farm.check_player_proximity();
       }
     } else if(player_input == "d") {
-      if(farm.is_valid_position(player.row(), player.column() + 1)) {
+      if(farm.is_valid_position(player.row(), player.column() + 1) && 
+         !farm.has_bunny_at(player.row(), player.column() + 1)) {
         player.move_right();
+        farm.check_player_proximity();
       }
     } else if(player_input == "s") {
-      if(farm.is_valid_position(player.row() + 1, player.column())) {
+      if(farm.is_valid_position(player.row() + 1, player.column()) && 
+         !farm.has_bunny_at(player.row() + 1, player.column())) {
         player.move_down();
+        farm.check_player_proximity();
       }
     } else if(player_input == "c") {
       Carrot *carrot = new Carrot();
